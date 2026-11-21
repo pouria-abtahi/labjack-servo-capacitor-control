@@ -1,8 +1,8 @@
-# Capacitor-Threshold Servo & LED Controller — LabJack U3-HV
+# Capacitor-Threshold Servo & LED Controller: LabJack U3-HV
 
 A small hardware/software system: a C program running on a PC talks to a **LabJack U3-HV** DAQ over USB. It reads a capacitor's voltage on an analog input and drives a **servo motor (PWM)** and an **LED** once a user-set threshold is crossed. I also designed a custom **PCB** for the circuit in PADS.
 
-Project for **HSI255 – Hardware/Software Interfacing**, Computer Engineering Technology, Seneca Polytechnic (Winter 2023). Individual project.
+Project for **HSI255 Hardware/Software Interfacing**, Computer Engineering Technology, Seneca Polytechnic (Winter 2023). Individual project.
 
 **Skills shown:** C · data acquisition (analog in, digital out, timer/PWM) · servo PWM timing · RC circuit design · schematic capture and PCB layout (PADS) · Gerber/drill output · BOM costing
 
@@ -15,7 +15,7 @@ Project for **HSI255 – Hardware/Software Interfacing**, Computer Engineering T
 ## How it works
 
 1. At start-up the servo is parked at one end (0°) and the LED is off.
-2. The user enters a **threshold voltage** (0.1–4.45 V) and an **exit strategy**: run for *N seconds*, or stop after *N servo activations*.
+2. The user enters a **threshold voltage** (0.1 to 4.45 V) and an **exit strategy**: run for *N seconds*, or stop after *N servo activations*.
 3. The program samples the capacitor on **AIN1** 10 times per second and prints the voltage.
 4. Pressing the push-button charges the capacitor through R1. When it reaches the threshold, the servo moves to the middle (90°), the LED (FIO5) turns on, and the user is told.
 5. When the capacitor discharges below the threshold through R2, the servo returns to 0° and the LED turns off.
@@ -49,9 +49,9 @@ A cleaner fix would be **hysteresis**: separate on and off thresholds, for examp
 | R3 | Resistor | 330 Ω, LED current limit |
 | C1 | Electrolytic | 470 µF 10 V |
 | P1 | Tactile switch | SPST-NO |
-| — | Servo | 5 V, 9 g metal-gear |
-| — | LED | red, 5 mm |
-| — | Terminal blocks / header | 5 mm 2-pos ×2, 2.54 mm 3-pos |
+| n/a | Servo | 5 V, 9 g metal-gear |
+| n/a | LED | red, 5 mm |
+| n/a | Terminal blocks / header | 5 mm 2-pos ×2, 2.54 mm 3-pos |
 
 Total component cost: **$12.28 CAD** (Digi-Key, 2023).
 
